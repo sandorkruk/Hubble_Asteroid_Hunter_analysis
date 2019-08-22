@@ -8,16 +8,16 @@ a) 3,741 images based on predicted asteroid positions from the ESA **SSO pipelin
 
 b) 7,133 images based on **blind** HST fields within 10 degress of the ecliptic plane. These were blank images taken with the ACS and WFC3 instruments, without marked positions. The retirement limit of the images was N=20. 
 
-The workflow of the project had four tasks:
-T0 - Q: Is there an asteroid trail visible in the images? A: Yes / No / Impossible-to-tell
-T1 - Mark the beginning and end position of the asteroid trail in the image.
-T2 - Q: Is there any other asteroid trail visible in the image? A: Yes / No
-T3 - Mark the beginning and end position of the other asteroid trail in the image.
+The workflow of the project had four tasks: \
+T0 - Q: Is there an asteroid trail visible in the images? A: Yes / No / Impossible-to-tell \
+T1 - Mark the beginning and end position of the asteroid trail in the image. \
+T2 - Q: Is there any other asteroid trail visible in the image? A: Yes / No \
+T3 - Mark the beginning and end position of the other asteroid trail in the image. \
 
 Subsequently, the analysis is split into the two subject sets. The individual markings were aggregated into clusters with the HDBSCAN ML algorithm (https://hdbscan.readthedocs.io/en/latest/), with the parameters (min_cluster_size: 10, min_samples: 5 for the SSO pipeline) and (min_cluster_size: 5, min_samples: 5 for the blind images). 
 
 The classifications and aggregated answers and markings are given in the files: 
-*asteroid_SSO_classifications_markings.csv*
+*asteroid_SSO_classifications_markings.csv*\
 *asteroid_blind_classifications_markings.csv*
 
 The two Jupyter notebooks show the analysis of the classifications and markings for the two subject sets, separately. 
@@ -31,3 +31,4 @@ We used a threshold of p_yes>0.3 to select images with asteroids to inspect.
 In the **SSO pipeline** dataset, after cleaning the classifications, 1333 images were identified as having asteroids (35.6% of the images). The classifications are accurate (>95%) for the ACS and WFC3 images, while for WFPC2 it is fairly low (False positive rate ~50%), due to CR trails being misclassified as asteroids. 
 
 In the **blind** images, after clearning the classifications, 468 images are identified as having asteroids (6.6% of the images). For this dataset, the false positive rate is quite high, ~50%, probably due to the lack of guidance from the green markers. Common misclassifications: gravitational lensing (26), edge-on galaxies (18), quasar jets (6), stellar diffraction spike (71), cosmic rays (359) and image artefacts (72). 
+
